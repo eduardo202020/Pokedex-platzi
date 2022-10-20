@@ -5,4 +5,9 @@ interface setPokemons {
   payload: []
 }
 
-export type Actions = setPokemons
+interface setLoading {
+  type: ActionType.SET_LOADING
+  payload: boolean
+}
+
+export type Actions = setPokemons | setLoading
