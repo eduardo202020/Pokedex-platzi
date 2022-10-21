@@ -1,5 +1,3 @@
-
-
 export const getPokemons = () => {
   return fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
     .then(res => res.json())
@@ -9,9 +7,7 @@ export const getPokemons = () => {
 
 export const getPokemonDetails = async () => {
   const getPokemonsResponse = await getPokemons()
-  console.log(getPokemonsResponse)
   const pokemonDetail = await Promise.all(getPokemonsResponse.map(pokemon => {
-    console.log("URL: ",pokemon.url)
     return fetch(pokemon.url)
       .then(res => { return res.json() })
       .catch((err) => console.log(err))

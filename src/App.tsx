@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux' 
+import { useSelector, useDispatch, shallowEqual } from 'react-redux' 
 import { getPokemonsDetails, setLoading} from './actions/index'
 
 import { SearchBar } from './components/SearchBar'
@@ -9,17 +9,17 @@ import { Card } from './components/Card'
 import { getPokemons } from './hooks/getPokemons'
 
 import { IPokemon } from './types'
+import { fetchPokemonsWithDetails } from './slices/dataSlice';
 
 function App() {
-  const pokemons = useSelector(state => state.pokemons)
-  const loading = useSelector(state => state.loading)
+  const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
+  // const pokemons = useSelector((state) => state.getIn(['data','pokemons'], shallowEqual)).toJS()
+  const loading = useSelector((state) => state.ui.loading);
+  // const loading = useSelector((state) => state.getIn(['ui','loading']))
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setLoading(true))
-    getPokemons()
-      .then(response => dispatch(getPokemonsDetails(response)))
-      .then(() => dispatch(setLoading(false)))
+    dispatch(fetchPokemonsWithDetails())
   }, [])
 
   return (
