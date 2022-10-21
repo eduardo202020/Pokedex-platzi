@@ -13,6 +13,11 @@ export const setLoading = (payload) => ({
   payload,
 })
 
+export const setFavorite = (payload) => ({
+  type: ActionType.SET_FAVORITE,
+  payload,
+})
+
 export const getPokemonsDetails = 
   (pokemons: Pokemons = []) => 
   async (dispatch) => {

@@ -10,4 +10,9 @@ interface setLoading {
   payload: boolean
 }
 
-export type Actions = setPokemons | setLoading
+interface setFavorite {
+  type: ActionType.SET_FAVORITE
+  payload: boolean
+}
+
+export type Actions = setPokemons | setLoading | setFavorite

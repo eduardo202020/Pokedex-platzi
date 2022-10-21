@@ -17,6 +17,7 @@ export interface IPokemon {
   stats: Stat[];
   types: Type[];
   weight: number;
+  favorite: boolean;
 }
 
 interface Ability {

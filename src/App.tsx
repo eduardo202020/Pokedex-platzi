@@ -31,10 +31,12 @@ function App() {
       >
         {(pokemon: IPokemon) => (
           <Card
-            key={pokemon.name}
+            key={pokemon.id}
+            number={pokemon.id}
             name={pokemon.name}
             image={pokemon.sprites.front_default}
             types={pokemon.types}
+            favorite={pokemon.favorite}
           />
         )}
       </PokemonList>
