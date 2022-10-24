@@ -1,21 +1,20 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux' 
-import { getPokemonsDetails, setLoading} from './actions/index'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 
 import { SearchBar } from './components/SearchBar'
 import { PokemonList } from './components/PokemonList'
 import { Card } from './components/Card'
+import { EmptyResults } from './components/EmptyResults'
 
-import { getPokemons } from './hooks/getPokemons'
-
-import { IPokemon } from './types'
 import { fetchPokemonsWithDetails } from './slices/dataSlice';
+import { IAppState } from './reducers/rootReducer'
+
+
 
 function App() {
-  const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
-  // const pokemons = useSelector((state) => state.getIn(['data','pokemons'], shallowEqual)).toJS()
-  const loading = useSelector((state) => state.ui.loading);
-  // const loading = useSelector((state) => state.getIn(['ui','loading']))
+  const pokemons = useSelector((state: IAppState) => state.data.pokemons, shallowEqual);
+  const loading = useSelector((state: IAppState) => state.ui.loading);
+  const pokemonsSearched = useSelector((state: IAppState) => state.data.pokemonsSearched, shallowEqual)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -28,8 +27,10 @@ function App() {
       <PokemonList
         loading={loading}
         pokemonsList={pokemons}
+        pokemonsSearched={pokemonsSearched}
+        onEmptySearch={(searchedValue) => <EmptyResults searchedValue={searchedValue}/>}
       >
-        {(pokemon: IPokemon) => (
+        {(pokemon) => (
           <Card
             key={pokemon.id}
             number={pokemon.id}
@@ -40,7 +41,6 @@ function App() {
           />
         )}
       </PokemonList>
-
     </section>
   );  
 }

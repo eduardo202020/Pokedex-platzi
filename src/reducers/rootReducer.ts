@@ -14,3 +14,5 @@ export const rootReducer = combineReducers({
   data: dataReducer,
   ui: uiReducer,
 })
+
+export type IAppState = ReturnType<typeof rootReducer>

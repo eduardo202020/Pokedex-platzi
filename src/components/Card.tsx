@@ -1,5 +1,3 @@
-import {useDispatch} from 'react-redux'
-import { setFavorite } from '../actions'
 import { FavoriteBtn } from './FavoriteBtn'
 import { Type} from '../types'
 
