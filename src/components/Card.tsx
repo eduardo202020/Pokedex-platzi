@@ -10,7 +10,27 @@ interface IProps {
   favorite: boolean
 }
 
-const pokemonTypeBGColor = {
+interface IPokemonType {
+  grass: string;
+  poison: string;
+  fire: string;
+  flying: string;
+  water: string;
+  bug: string;
+  normal: string;
+  electric:string;
+  ground: string; 
+  fairy: string;
+  fighting:string;
+  psychic: string;
+  rock: string;
+  steel: string;
+  ice: string;
+  ghost: string;
+  dragon: string;
+}
+
+const pokemonTypeBGColor: IPokemonType = {
   grass: "bg-green-500",
   poison: "bg-violet-500",
   fire: "bg-orange-600",
@@ -30,7 +50,7 @@ const pokemonTypeBGColor = {
   dragon: "bg-purple-800",
 }
 
-const pokemonTypeTextColor = {
+const pokemonTypeTextColor: IPokemonType = {
   grass: "text-black",
   poison: "text-white",
   fire: "text-white",
@@ -54,10 +74,10 @@ export const Card = ({image, name, types, number, favorite}: IProps) => {
   return (
     <article key={number} className='w-72 p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700'> 
       <section className='flex justify-between items-center'>
-        <p className='text-[22px]'>#{number}</p>
+        <p className='text-[22px] dark:text-white'>#{number}</p>
         <FavoriteBtn isFavorite={favorite} id={number}/>
       </section>
-      <img src={image} className='mx-auto w-36 h-36 object-fill' alt="" />
+      <img src={image} className='mx-auto w-36 h-36 object-fill' alt={name} />
       <section className='pb-1'>
         <h2 
           className='mb-4 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white'
@@ -67,8 +87,9 @@ export const Card = ({image, name, types, number, favorite}: IProps) => {
         <section className='flex justify-center gap-3'>
           {
             types.map(type => (
-              <p className={` p-1 rounded-md ${pokemonTypeTextColor[type.type.name]} ${pokemonTypeBGColor[type.type.name]}`}>
-                {type.type.name[0].toUpperCase() + type.type.name.slice(1)}
+              <p 
+                className={` p-1 rounded-md ${pokemonTypeTextColor[type.type.name as keyof IPokemonType]} ${pokemonTypeBGColor[type.type.name as keyof IPokemonType]}`}>
+                  {type.type.name[0].toUpperCase() + type.type.name.slice(1)}
               </p>
             ))
           }

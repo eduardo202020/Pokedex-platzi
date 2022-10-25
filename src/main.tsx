@@ -7,6 +7,12 @@ import thunk from 'redux-thunk'
 import { rootReducer } from './reducers/rootReducer'
 import './index.css'
 
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+
 const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const composedEnhancers = composeAlt(applyMiddleware(thunk));

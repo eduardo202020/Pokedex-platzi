@@ -9,7 +9,7 @@ interface IProps {
   pokemonsSearched: IPokemon[]
   loading: boolean
   onEmptySearch: (searchValue: string) => JSX.Element
-  children?: (pokemon: IPokemon) => JSX.Element
+  children: (pokemon: IPokemon) => JSX.Element
 }
 
 export const PokemonList = (props: IProps) => {
@@ -27,7 +27,6 @@ export const PokemonList = (props: IProps) => {
               : props.pokemonsSearched.length !== 0
                   ? props.pokemonsSearched.map(props.children)
                   : props.pokemonsList.map(props.children)
-                
             }
           </section>
       }
