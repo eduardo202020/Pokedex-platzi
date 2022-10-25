@@ -1,4 +1,9 @@
-export const getPokemons = () => {
+export interface IGetPokemon {
+  name: string;
+  url:  string;
+}
+
+export const getPokemons = (): Promise<IGetPokemon[]> => {
   return fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
     .then(res => res.json())
     .then(res => { return res.results })
