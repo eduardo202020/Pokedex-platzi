@@ -18,7 +18,7 @@ export const PokemonList = (props: IProps) => {
   return (
     <>
       {
-        (props.pokemonsSearched.length == 0 && searchedValue) 
+        (props.pokemonsSearched.length == 0 && searchedValue != "") 
         ? props.onEmptySearch(searchedValue)
         :
           <section className='grid grid-cols-1 gap-4 place-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>

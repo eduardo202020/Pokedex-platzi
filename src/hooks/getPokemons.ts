@@ -1,5 +1,6 @@
 import { IPokemon } from '../types'
 
+
 export interface IGetPokemons {
   name: string;
   url: string;

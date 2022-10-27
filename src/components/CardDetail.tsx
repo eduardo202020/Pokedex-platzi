@@ -1,4 +1,5 @@
-import { pokemonTypeBGColor, pokemonTypeTextColor } from '../pokemonType'
+import { Link } from 'react-router-dom';
+import { pokemonTypeBGColor, pokemonTypeTextColor, pokemonStats, pokemonStatsColor } from '../pokemonType'
 import { Type, IPokemonType, Stat } from '../types'
 
 import { ReactComponent as ArrowLeftIcon } from '../assets/arrow-left-icon.svg'
@@ -15,24 +16,23 @@ interface IProps {
   stats: Stat[];
 }
 
-const pokemonStats = {
-  hp: "HP",
-  attack: "ATTK",
-  defense: "DEF",
-  "special-attack": "S-ATTK",
-  "special-defense": "S-DEF",
-  speed: "SPED",
+const statPercentage = (stat) => {
+  return Math.round((stat*226)/300)
 }
 
 export const CardDetail = ({ image, name, types, number, height, weight, stats }: IProps) => {
   return (
     <section className='grid place-items-center'>
-      <article key={number} className='w-72 p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700'>
-        <section className='flex justify-between items-center'>
-          <ArrowLeftIcon className='w-8 h-8 dark:text-white'/>
-          <p className='text-[22px] dark:text-white'>#{number}</p>
+      <article key={number} className='flex flex-col w-80 p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 md:flex-row md:w-[640px] md:justify-center'>
+        <section className='flex flex-col md:mr-14'>
+          <section className='flex justify-between items-center'>
+            <Link to="/">
+              <ArrowLeftIcon className='w-8 h-8 dark:text-white'/>
+            </Link>
+              <p className='text-[22px] dark:text-white'>#{number}</p>
+          </section>
+          <img src={image} className='mx-auto my-auto w-72 h-72 object-fill' alt={name} />
         </section>
-        <img src={image} className='mx-auto w-72 h-72 object-fill' alt={name} />
         <section className='pb-1'>
           <h2
             className='mb-4 text-4xl text-center font-bold tracking-tight text-gray-900 dark:text-white'
@@ -51,22 +51,27 @@ export const CardDetail = ({ image, name, types, number, height, weight, stats }
           </section>
           <section className='grid grid-cols-2 justify-items-center text-center dark:text-white mb-6 '>
             <section>
-              <p className='text-2xl font-bold'>{weight}</p>
+              <p className='text-2xl font-bold'>{weight/10} kg</p>
               <p className='font-light'>Weight</p>
             </section>
             <section>
-              <p className='text-2xl font-bold'>{height}</p>
+              <p className='text-2xl font-bold'>{height/10} m</p>
               <p className='font-light'>Height</p>
             </section>
           </section>
+          <p className='text-2xl text-center font-bold pb-4 dark:text-white'>Base Stats</p>
           {
             stats.map(stat => {
               return (
                 <section className='flex'>
                   <p className='w-14 dark:text-white'>{pokemonStats[stat.stat.name]}</p>
-                  <div className="w-[192px] h-4 bg-gray-200 rounded-full dark:bg-gray-700">
+                  <div className="w-[226px] h-4 bg-gray-200 rounded-full dark:bg-gray-700">
                     <div 
-                      className={`bg-blue-600 h-4 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full`}
+                      className={`bg-${pokemonStatsColor[stat.stat.name]} h-4 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full`}
+                      style={{
+                        width: statPercentage(stat.base_stat) + 'px',
+                        backgroundColor: `${pokemonStatsColor[stat.stat.name]}`
+                      }}
                     >
                       {stat.base_stat}
                     </div>

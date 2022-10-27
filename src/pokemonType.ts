@@ -39,3 +39,21 @@ export const pokemonTypeTextColor: IPokemonType = {
   ghost: "text-black",
   dragon: "text-white",
 }
+
+export const pokemonStats = {
+  hp: "HP",
+  attack: "ATTK",
+  defense: "DEF",
+  "special-attack": "S-ATTK",
+  "special-defense": "S-DEF",
+  speed: "SPED",
+}
+
+export const pokemonStatsColor = {
+  hp: "#ca8a04",
+  attack: "#f43f5e",
+  defense: "#3b82f6",
+  "special-attack": "#be123c",
+  "special-defense": "#1d4ed8",
+  "speed": "#059669",
+}
