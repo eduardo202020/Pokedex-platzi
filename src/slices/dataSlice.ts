@@ -65,7 +65,6 @@ export const dataSlice = createSlice({
 export const {
   setFavorite,
   setPokemons,
-  setPokemon,
   setSearch,
   setSearchValue,
 } = dataSlice.actions;
