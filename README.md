@@ -5,6 +5,7 @@
 With the [**Pokedex**](https://pokedex-tau.vercel.app "**Pokedex**") you can look for any pokemon of the first generation.
 
 <img src="./public/images/example1.png"/>
+<img src="./public/images/example2.png"/>
 
 ## Open API
 
