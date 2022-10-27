@@ -173,3 +173,23 @@ export interface Type {
   slot: number;
   type: Species;
 }
+
+interface IPokemonType {
+  grass: string;
+  poison: string;
+  fire: string;
+  flying: string;
+  water: string;
+  bug: string;
+  normal: string;
+  electric:string;
+  ground: string; 
+  fairy: string;
+  fighting:string;
+  psychic: string;
+  rock: string;
+  steel: string;
+  ice: string;
+  ghost: string;
+  dragon: string;
+}

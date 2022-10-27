@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <header className='grid place-items-center relative'>
-      <PokedexIcon className='w-96 h-52 mb-8'/>
+      <PokedexIcon className='w-80 h-52 mb-8'/>
       <button onClick={() => setDarkMode(colorTheme)}>
         {
           colorTheme === 'dark'
