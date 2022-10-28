@@ -4,6 +4,7 @@ import { Type, IPokemonType, Stat } from '../types'
 
 import { ReactComponent as ArrowLeftIcon } from '../assets/arrow-left-icon.svg'
 
+import { CardDetailLoading } from './CardDetailLoading'
 
 interface IProps {
   key: number;
@@ -65,7 +66,7 @@ export const CardDetail = ({ image, name, types, number, height, weight, stats }
               return (
                 <section className='flex'>
                   <p className='w-14 dark:text-white'>{pokemonStats[stat.stat.name]}</p>
-                  <div className="w-[226px] h-4 bg-gray-200 rounded-full dark:bg-gray-700">
+                  <div className="w-[226px] h-4 flex justify-between pr-3 bg-gray-200 text-xs font-medium text-end rounded-full dark:text-slate-200 dark:bg-gray-700">
                     <div 
                       className={`bg-${pokemonStatsColor[stat.stat.name]} h-4 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full`}
                       style={{
@@ -75,6 +76,7 @@ export const CardDetail = ({ image, name, types, number, height, weight, stats }
                     >
                       {stat.base_stat}
                     </div>
+                    300
                   </div>
                 </section>
               )
@@ -84,7 +86,6 @@ export const CardDetail = ({ image, name, types, number, height, weight, stats }
           </section>
         </section>
       </article>
-
     </section>
   )
 }

@@ -19,8 +19,8 @@ export const Header = () => {
       <button onClick={() => setDarkMode(colorTheme)}>
         {
           colorTheme === 'dark'
-          ? <DarkModeIcon className='absolute w-5 h-5 top-0 right-0 cursor-pointer'/>
-          : <LIghtModeIcon className='absolute w-6 h-6 top-0 text-white right-0 cursor-pointer'/>
+          ? <DarkModeIcon className='absolute w-5 h-5 top-0 right-10 cursor-pointer'/>
+          : <LIghtModeIcon className='absolute w-6 h-6 top-0 right-10 text-white right-0 cursor-pointer'/>
         }
       </button>
     </header>

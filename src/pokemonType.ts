@@ -42,9 +42,9 @@ export const pokemonTypeTextColor: IPokemonType = {
 
 export const pokemonStats = {
   hp: "HP",
-  attack: "ATTK",
+  attack: "ATT",
   defense: "DEF",
-  "special-attack": "S-ATTK",
+  "special-attack": "S-ATT",
   "special-defense": "S-DEF",
   speed: "SPED",
 }
